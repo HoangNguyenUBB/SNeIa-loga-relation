@@ -9,10 +9,6 @@ import subprocess
 import sys
 import time
 
-import subprocess
-import sys
-import time
-
 from pathlib import Path
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
