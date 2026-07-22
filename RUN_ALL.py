@@ -17,6 +17,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
+import os
+
 figure_outputs = {
     "make_Figure_1.py": ["Figure_1.png"],
     "make_Figure_2_upper_panel.py": ["Figure_2_upper_panel.png"],
@@ -90,10 +92,14 @@ for heading, scripts in pipeline:
 
         print(f"\n>>> Running {script}")
         
+        env = os.environ.copy()
+        env["MPLBACKEND"] = "Agg"
+
         result = subprocess.run(
             [sys.executable, script],
             capture_output=True,
-            text=True
+            text=True,
+            env=env
         )
         
         if script in figure_outputs:
@@ -128,84 +134,3 @@ if elapsed < 60:
 else:
     print(f"All scripts completed successfully in {elapsed/60:.1f} min.")
 print("=" * 72)
-
-# #!/usr/bin/env python3
-# """
-# Run the complete analysis pipeline.
-
-# This script executes all fitting, table-generation, and figure-generation
-# scripts in the correct order to reproduce the numerical results presented
-# in the manuscript.
-# """
-
-# import time
-
-# import subprocess
-# import sys
-
-# scripts = [
-
-#     # Step 1
-#     "convert_cov_to_npy.py",
-
-#     # Step 2: Flat LCDM
-#     "fit_LCDM.Pan_original.py",
-#     "fit_LCDM.DES_original.py",
-#     "fit_LCDM.Joint_original.py",
-#     "fit_LCDM.Pan_age_corrected.py",
-#     "fit_LCDM.DES_age_corrected.py",
-#     "fit_LCDM.Joint_age_corrected.py",
-
-#     # Flat wCDM
-#     "fit_wCDM.Pan_original.py",
-#     "fit_wCDM.DES_original.py",
-#     "fit_wCDM.Joint_original.py",
-#     "fit_wCDM.Pan_age_corrected.py",
-#     "fit_wCDM.DES_age_corrected.py",
-#     "fit_wCDM.Joint_age_corrected.py",
-
-#     # Logarithmic relation
-#     "fit_Loga.Pan_original.py",
-#     "fit_Loga.DES_original.py",
-#     "fit_Loga.Joint_original.py",
-#     "fit_Loga.Pan_age_corrected.py",
-#     "fit_Loga.DES_age_corrected.py",
-#     "fit_Loga.Joint_age_corrected.py",
-
-#     # Quadratic logarithmic relation
-#     "fit_Quadratic_Loga.Joint_original.py",
-#     "fit_Quadratic_Loga.Joint_age_corrected.py",
-
-#     # Step 3: Tables
-#     "make_Table_1.py",
-#     "make_Table_C1.py",
-#     "make_Tables_D1_and_D2.py",
-#     "make_Table_E1.py",
-#     "make_Tables_G1_and_G2.py",
-
-#     # Step 4: Figures
-#     "make_Figure_1.py",
-#     "make_Figure_2_upper_panel.py",
-#     "make_Figure_2_lower_panel.py",
-#     "make_Figure_3.py",
-# ]
-
-# t0 = time.perf_counter()
-# print("\nRunning 30 scripts ...")
-# for script in scripts:
-#     print(f"{'='*70}")
-#     print(f"Running {script}")
-#     print(f"{'='*70}")
-
-#     result = subprocess.run([sys.executable, script])
-
-#     if result.returncode != 0:
-#         print(f"\nERROR: {script} failed.")
-#         sys.exit(result.returncode)
-
-# elapsed = time.perf_counter() - t0
-
-# if elapsed < 60:
-#     print(f"\n\nAll scripts completed successfully in {elapsed:.1f} s.")
-# else:
-#     print(f"\n\nAll scripts completed successfully in {elapsed/60:.1f} min.")
