@@ -2,7 +2,7 @@
 
 This repository contains the Python scripts used to reproduce the numerical results, tables, and figures of the manuscript *Indications of a parsimonious luminosity-distance relation in progenitor-age-corrected Type Ia supernova data*.
 
-The repository reproduces the numerical analyses presented in the paper. All figures and tables can be regenerated directly from the supplied scripts.
+This repository contains all Python scripts required to reproduce the numerical analyses, tables, and figures presented in the manuscript.
 
 ---
 
@@ -44,7 +44,9 @@ No other modifications are required.
 
 # Input data
 
-The analyses use the public Pantheon+ and DES-SN5YR data releases. The data files are not included in this repository and should be downloaded from the official Pantheon+ and DES-SN5YR releases.
+The analyses use the public Pantheon+ and DES-SN5YR data. The data files are not included in this repository and should be downloaded from the official Pantheon+ and DES-SN5YR sites:
+https://github.com/PantheonPlusSH0ES/DataRelease/tree/main/Pantheon%2B_Data/4_DISTANCES_AND_COVAR
+https://github.com/des-science/DES-SN5YR/tree/main/4_DISTANCES_COVMAT
 
 Required files (downloadable from Pantheon+ and DES-SN5YR sites):
 
@@ -75,14 +77,14 @@ Raw data
 fit_*.py
       │
       ▼
-compact output (*.txt)
+intermediate output (*.txt)
       │
       ├──► make_Table_*.py
       └──► make_Figure_*.py
 
 ```
 
-The fitting scripts perform the numerical analyses and generate compact output files used by the table and figure generation scripts.
+The fitting scripts perform the numerical analyses and generate intermediate output files used by the table and figure generation scripts.
 
 The table scripts regenerate the manuscript tables.
 
@@ -92,15 +94,17 @@ The figure scripts regenerate the manuscript figures.
 
 # Age correction
 
-The progenitor-age correction used throughout the repository is $\Delta\mu(z)=0.183\left[1-\exp(-2.2z)\right]$ which is subtracted from the observed distance modulus whenever `AGE_CORRECTION = 1` is selected.
-
-Setting `AGE_CORRECTION = 0` uses the original published supernova distances.
+The progenitor-age correction used throughout the repository is $\Delta\mu(z)=0.183\left[1-\exp(-2.2z)\right]$ which is subtracted from the observed distance modulus whenever `AGE_CORRECTION = 1` is selected. (The distributed scripts have already been configured with the appropriate value of `AGE_CORRECTION` for each analysis (original or age-corrected data). Users should not modify this setting.)
 
 ---
 
 # Running the Scripts
 
-To ensure successful reproduction of the numerical results presented in the manuscript, the scripts should be executed in the following order.
+To reproduce the numerical results presented in the manuscript, the scripts should be executed in the following order:
+
+## Step 0. Download the supernova data
+
+Download the Pantheon+ and DES-SN5YR data (see the **Input data** section) and place the four required files in the same directory as the scripts.
 
 ## Step 1. Convert the Pantheon+ covariance matrix
 ```
@@ -151,7 +155,7 @@ fit_QuadraticLoga.Joint_original.py
 fit_QuadraticLoga.Joint_age_corrected.py
 ```
 
-The fitting scripts generate compact text files containing only the numerical quantities required by the plotting and table-generation scripts.
+The fitting scripts generate intermediate output text files containing only the numerical quantities required by the plotting and table-generation scripts.
 
 ## Step 3. Generate the manuscript tables
 
@@ -167,11 +171,20 @@ make_Tables_G1_and_G2.py
 
 ```
 make_Figure_1.py
-make_Figure_2.py
+make_Figure_2_upper_panel.py
+make_Figure_2_lower_panel.py
 make_Figure_3.py
 ```
 
-Note: you need to run `make_Figure_2.py` twice, once with `AGE_CORRECTION = 0` and once with `AGE_CORRECTION = 1`.
+## Optional: Run the complete workflow
+
+For convenience, the repository also includes
+
+```
+RUN_ALL.py
+```
+
+which executes all scripts in the correct order to reproduce the complete set of numerical results, tables, and figures. The total runtime is approximately 5 minutes.
 
 ---
 
@@ -181,15 +194,13 @@ The analyses employ generalized least squares using the published covariance mat
 
 For the Pantheon+ and DES joint analyses, the two surveys are combined using a block-diagonal covariance matrix.
 
-When fitting the joint datasets, the parameters $H_{0}^{\rm Pan}$ and $H_{0}^{\rm DES}$ are analytically profiled independently.
-
-No other nuisance parameters are introduced.
+When fitting the joint datasets, the parameters $H_{0}^{\rm Pan}$ and $H_{0}^{\rm DES}$ are analytically profiled independently. No other nuisance parameters are introduced.
 
 ---
 
 # Output
 
-The fitting scripts generate compact text files that are subsequently used by the table and figure generation scripts. These intermediate files should not be edited manually.
+The fitting scripts generate intermediate output text files that are subsequently used by the table and figure generation scripts. These intermediate files should not be edited manually.
 
 Running the scripts in the order described above reproduces
 

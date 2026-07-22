@@ -32,7 +32,13 @@ Date  : July 2026
 import numpy as np
 import pandas as pd
 
-from scipy.integrate import cumtrapz
+# Compatibility across SciPy versions:
+# SciPy >= 1.10 uses cumulative_trapezoid; older versions use cumtrapz.
+try:
+    from scipy.integrate import cumulative_trapezoid as cumtrapz
+except ImportError:
+    from scipy.integrate import cumtrapz
+
 from scipy.linalg import cho_factor, solve_triangular
 from scipy.optimize import least_squares
 

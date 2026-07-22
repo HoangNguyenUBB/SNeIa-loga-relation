@@ -24,8 +24,13 @@ Date  : July 2026
 
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.integrate import cumtrapz
 
+# Compatibility across SciPy versions:
+# SciPy >= 1.10 uses cumulative_trapezoid; older versions use cumtrapz.
+try:
+    from scipy.integrate import cumulative_trapezoid as cumtrapz
+except ImportError:
+    from scipy.integrate import cumtrapz
 
 # ============================================================
 # Constants
