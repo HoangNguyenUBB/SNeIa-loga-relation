@@ -772,7 +772,7 @@ for text in leg.get_texts():
     text.set_color("black")
     
 leg.get_title().set_fontweight('bold')
-plt.show()
 
+print()
 print("Saved", output_file_pdf)
 print("Saved", output_file_png)
