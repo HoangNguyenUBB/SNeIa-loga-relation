@@ -408,8 +408,6 @@ fig.savefig(
     bbox_inches="tight",
 )
 
-plt.show()
-
 print()
 print("Saved Figure_1.pdf")
 print("Saved Figure_1.png")
