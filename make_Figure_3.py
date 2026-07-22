@@ -489,13 +489,9 @@ def main():
         bbox_inches="tight",
     )
 
-    plt.show()
-
     print()
     print(f"Saved {OUTPUT_PDF}")
     print(f"Saved {OUTPUT_PNG}")
-    print("Caption: Figure 3.")
-
 
 if __name__ == "__main__":
     main()
