@@ -86,7 +86,11 @@ for heading, scripts in pipeline:
 
     for script in scripts:
 
-        print(f"\n>>> Running {script}")
+        print(f"\n>>> Running {script}", end="")
+        if script in {"make_Figure_2_upper_panel.py", "make_Figure_2_lower_panel.py"}:
+            print(".  Patient: The script may take a few minutes to run ...")
+        else:
+            print()
         
         env = os.environ.copy()
         env["MPLBACKEND"] = "Agg"
