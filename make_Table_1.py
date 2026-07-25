@@ -182,7 +182,7 @@ for dataset in ("Pan", "DES", "Joint"):
 
         h0_pan_text = value_error(
             loga["H0"],
-            loga["sigma_H0"],
+            loga["sigma_H0"], 2
         )
 
         h0_des_text = dash()
@@ -193,19 +193,19 @@ for dataset in ("Pan", "DES", "Joint"):
 
         h0_des_text = value_error(
             loga["H0"],
-            loga["sigma_H0"],
+            loga["sigma_H0"], 2
         )
 
     else:
 
         h0_pan_text = value_error(
             loga["H0_Pan"],
-            loga["sigma_H0_Pan"],
+            loga["sigma_H0_Pan"], 2
         )
 
         h0_des_text = value_error(
             loga["H0_DES"],
-            loga["sigma_H0_DES"],
+            loga["sigma_H0_DES"], 2
         )
 
     rows.append({
@@ -229,12 +229,12 @@ for dataset in ("Pan", "DES", "Joint"):
 
         omega_text = value_error(
             lcdm["OmegaLambda"],
-            lcdm["sigma_OmegaLambda"],
+            lcdm["sigma_OmegaLambda"], 3
         )
 
         h0_pan_text = value_error(
             lcdm["H0"],
-            lcdm["sigma_H0"],
+            lcdm["sigma_H0"], 2
         )
 
         h0_des_text = dash()
@@ -243,14 +243,14 @@ for dataset in ("Pan", "DES", "Joint"):
 
         omega_text = value_error(
             lcdm["OmegaLambda"],
-            lcdm["sigma_OmegaLambda"],
+            lcdm["sigma_OmegaLambda"], 3
         )
 
         h0_pan_text = dash()
 
         h0_des_text = value_error(
             lcdm["H0"],
-            lcdm["sigma_H0"],
+            lcdm["sigma_H0"], 2
         )
 
     else:
@@ -262,12 +262,12 @@ for dataset in ("Pan", "DES", "Joint"):
 
         h0_pan_text = value_error(
             lcdm["H0_Pan"],
-            lcdm["sigma_H0_Pan"],
+            lcdm["sigma_H0_Pan"], 2
         )
 
         h0_des_text = value_error(
             lcdm["H0_DES"],
-            lcdm["sigma_H0_DES"],
+            lcdm["sigma_H0_DES"], 2
         )
 
     rows.append({
@@ -313,9 +313,9 @@ for row in rows:
         f"{row['h0_pan']:<18}"
         f"{row['h0_des']:<18}"
         f"{row['omega']:<15}"
-        f"{row['chi2']:>12.3f}"
-        f"{row['aic']:>12.3f}"
-        f"{row['bic']:>12.3f}"
+        f"{row['chi2']:>12.1f}"
+        f"{row['aic']:>12.1f}"
+        f"{row['bic']:>12.1f}"
     )
 
     if row["model"] == "LCDM":
