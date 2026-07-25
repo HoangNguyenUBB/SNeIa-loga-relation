@@ -15,6 +15,51 @@ import matplotlib.image as mpimg
 
 import os
 
+# =============================================================================
+# Check that required input data files are present
+# =============================================================================
+
+import os
+import sys
+
+required_files = {
+    "Pantheon+SH0ES.dat",
+    "Pantheon+SH0ES_STAT+SYS.cov",
+    "DES-Dovekie_HD.csv",
+    "STAT+SYS.npz",
+}
+
+missing = []
+
+for filename in required_files:
+    if not os.path.exists(filename):
+        missing.append(filename)
+
+if missing:
+    print("\n" + "=" * 64)
+    print("ERROR: Required input data files were not found.\n")
+
+    for filename in missing:
+        print(f"  Missing: {filename}")
+
+    print("\nPlease download the Pantheon+ and DES-SN5YR data products")
+    print("and place the required files in the current working directory.\n")
+
+    print("Pantheon+: (Pantheon+SH0ES.dat and Pantheon+SH0ES_STAT+SYS.cov)")
+    print("  https://github.com/PantheonPlusSH0ES/DataRelease\n")
+
+    print("DES-SN5YR: (DES-Dovekie_HD.csv and STAT+SYS.npz)")
+    print("  https://github.com/des-science/DES-SN5YR\n")
+
+    print("After downloading the files, run RUN_ALL.py again.")
+    print("=" * 64)
+
+    sys.exit()
+
+# =============================================================================
+# Main program
+# =============================================================================
+
 figure_outputs = {
     "make_Figure_1.py": ["Figure_1.png"],
     "make_Figure_2_upper_panel.py": ["Figure_2_upper_panel.png"],
@@ -88,7 +133,7 @@ for heading, scripts in pipeline:
 
         print(f"\n>>> Running {script}", end="")
         if script in {"make_Figure_2_upper_panel.py", "make_Figure_2_lower_panel.py"}:
-            print(".  Patient: The script may take 2-3 minutes to complete ...")
+            print(".  Patient: This script may take 2-3 minutes to complete ...")
         else:
             print()
         
