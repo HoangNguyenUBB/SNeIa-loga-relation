@@ -133,7 +133,8 @@ for heading, scripts in pipeline:
 
         print(f"\n>>> Running {script}", end="")
         if script in {"make_Figure_2_upper_panel.py", "make_Figure_2_lower_panel.py"}:
-            print(".  Patient: This script may take 2-3 minutes to complete ...")
+            print(".  Patient: This script may take 2-3 minutes to complete ...", end="")
+            t1 = time.perf_counter()
         else:
             print()
         
@@ -171,11 +172,14 @@ for heading, scripts in pipeline:
             print(f"\nERROR: {script} failed.")
             sys.exit(result.returncode)
 
+        if script in {"make_Figure_2_upper_panel.py", "make_Figure_2_lower_panel.py"}:
+            print(f"This script took {time.perf_counter() - t1:.0f} sec to complete.")
+
 elapsed = time.perf_counter() - t0
 
 print("\n" + "=" * 72)
 if elapsed < 60:
-    print(f"All scripts completed successfully in {elapsed:.1f} s.")
+    print(f"All scripts completed successfully in {elapsed:.0f} sec.")
 else:
     print(f"All scripts completed successfully in {elapsed/60:.1f} min.")
 print("=" * 72)
