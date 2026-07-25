@@ -620,9 +620,9 @@ lines = [
 for row in results:
 
     omega_text = (
-        f"{row['OmegaLambda']:.4f}"
+        f"{row['OmegaLambda']:.3f}"
         f" +/- "
-        f"{row['sigma_OmegaLambda']:.4f}"
+        f"{row['sigma_OmegaLambda']:.3f}"
     )
 
     lines.append(
@@ -631,11 +631,11 @@ for row in results:
         f"{row['N_DES']:>6d} "
         f"{row['N']:>6d} "
         f"{omega_text:>22} "
-        f"{row['chi2_Loga']:>12.3f} "
-        f"{row['chi2_LCDM']:>12.3f} "
-        f"{row['Delta_chi2']:>12.3f} "
-        f"{row['Delta_AIC']:>11.3f} "
-        f"{row['Delta_BIC']:>11.3f}"
+        f"{row['chi2_Loga']:>12.1f} "
+        f"{row['chi2_LCDM']:>12.1f} "
+        f"{row['Delta_chi2']:>12.1f} "
+        f"{row['Delta_AIC']:>11.1f} "
+        f"{row['Delta_BIC']:>11.1f}"
     )
 
 lines.append(separator)
