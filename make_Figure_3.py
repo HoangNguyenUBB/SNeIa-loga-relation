@@ -67,8 +67,8 @@ N_CURVE_POINTS = 1000
 OMEGA_LAMBDA_VALUES = [
     0.0,
     0.3,
-    0.5,
-    0.65,
+    0.491,
+    0.656,
     0.8,
     1.0,
 ]
@@ -221,8 +221,8 @@ def place_curve_labels(axis, z_curve):
     # ΩΛ    x      y_offset   rotation
     (1.00, 0.2,  0.06, 74),
     (0.80, 2.5,  0.035,-17),
-    (0.65, 2.35, 0.035,-17),
-    (0.50, 2., 0.035,-20),
+    (0.656, 2.35, 0.035,-17),
+    (0.491, 2., 0.035,-20),
     (0.30, 1.65, 0.035,-21),
     (0.00, 1.1, 0.035,-23),
     ]
@@ -309,12 +309,12 @@ def main():
             "linewidth": 1.2,
             "color": "sienna",
         },
-        0.5: {
+        0.491: {
             "linestyle": "-",
             "linewidth": 1.5,
             "color": "blue",
         },
-        0.65: {
+        0.656: {
             "linestyle": "--",
             "linewidth": 1.5,
             "color": "red",
@@ -469,7 +469,7 @@ def main():
     axis.legend(
         loc="lower left",
         frameon=False,
-        fontsize=8.5,
+        fontsize=9.5,
         handlelength=1.0,
         handletextpad=0.5,
         borderaxespad=0.55,
