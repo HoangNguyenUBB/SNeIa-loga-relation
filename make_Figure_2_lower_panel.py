@@ -752,7 +752,7 @@ plt.savefig(
     bbox_inches="tight"
 )
 
-prefix  = "Age-corrected" if AGE_CORRECTION else "Original"
+prefix  = "Post-ABC" if AGE_CORRECTION else "Pre-ABC"
 
 plot_title = f"{prefix} Pantheon+ & DES:"
 
