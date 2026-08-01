@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 # User settings
 # ============================================================
 
-AGE_CORRECTION = 0    # 0 : Original data (plot upper panel of Figure 2)
+AGE_CORRECTION = 0    # 0 :  data (plot upper panel of Figure 2)
                       # 1 : Age-corrected data (plot lower panel of Figure 2)
 
 OMEGA_MIN, OMEGA_MAX = 0.0, 1.4   # Adjust these numbers for Omega_DE bounds
@@ -752,7 +752,7 @@ plt.savefig(
     bbox_inches="tight"
 )
 
-prefix  = "Age-corrected" if AGE_CORRECTION else "Original"
+prefix  = "Post-ABC" if AGE_CORRECTION else "Pre-ABC"
 
 plot_title = f"{prefix} Pantheon+ & DES:"
 
