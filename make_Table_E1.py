@@ -466,10 +466,10 @@ title_lines = [
 
 group_header = (
     " " * (parameter_width + 2)
-    + "Original data".center(
+    + "Pre-ABC data".center(
         original_group_width
     )
-    + "Age-corrected data".center(
+    + "Post-ABC data".center(
         corrected_group_width
     )
 )
