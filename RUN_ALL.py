@@ -19,9 +19,6 @@ import os
 # Check that required input data files are present
 # =============================================================================
 
-import os
-import sys
-
 required_files = {
     "Pantheon+SH0ES.dat",
     "Pantheon+SH0ES_STAT+SYS.cov",
@@ -131,12 +128,8 @@ for heading, scripts in pipeline:
 
     for script in scripts:
 
-        print(f"\n>>> Running {script}", end="")
-        if script in {"make_Figure_2_upper_panel.py", "make_Figure_2_lower_panel.py"}:
-            print(".  Patient: This script may take 2-3 minutes to complete ...", end="")
-            t1 = time.perf_counter()
-        else:
-            print()
+        print(f"\n>>> Running {script}", ".  Patient: This script may take 2-3 minutes to complete ..." if script in {"make_Figure_2_upper_panel.py", "make_Figure_2_lower_panel.py"} else "")
+        t1 = time.perf_counter()
         
         env = os.environ.copy()
         env["MPLBACKEND"] = "Agg"
