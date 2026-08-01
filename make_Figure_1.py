@@ -259,7 +259,7 @@ ax.plot(
     color="red",
     linestyle="--",
     linewidth=1.4,
-    label=r"Flat $\Lambda$CDM, original",
+    label=r"Flat $\Lambda$CDM, pre-ABC",
 )
 
 
@@ -299,7 +299,7 @@ ax.errorbar(
     markeredgewidth=0.4,
     elinewidth=0.8,
     capsize=1.7,
-    label="Original Pan+",
+    label="Pre-ABC Pantheon+",
     zorder=5,
 )
 
@@ -316,7 +316,7 @@ ax.errorbar(
     markeredgewidth=0.4,
     elinewidth=0.8,
     capsize=1.7,
-    label="Age-corrected Pan+",
+    label="Post-ABC Pantheon+",
     zorder=6,
 )
 
