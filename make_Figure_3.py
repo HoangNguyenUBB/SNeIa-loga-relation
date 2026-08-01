@@ -388,7 +388,7 @@ def main():
         capthick=0.8,
         linestyle="none",
         zorder=5,
-        label="Original SNe data",
+        label="Pre-ABC SNe data",
     )
     # --------------------------------------------------------
     # Age-corrected data
@@ -409,7 +409,7 @@ def main():
         capthick=0.8,
         linestyle="none",
         zorder=6,
-        label="Age-corrected SNe data",
+        label="Post-ABC SNe data",
     )
 
     # --------------------------------------------------------
