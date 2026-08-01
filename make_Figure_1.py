@@ -325,15 +325,9 @@ ax.errorbar(
 # Formatting
 # ============================================================
 
-ax.set_xlim(
-    0,
-    2.30,
-)
+ax.set_xlim(-0.05, 2.26)
 
-ax.set_ylim(
-    0,
-    1.00,
-)
+ax.set_ylim(-0.1, 1)
 
 ax.set_xlabel(
     r"Redshift $z$"
